@@ -16,11 +16,11 @@ class Keyboard:
 				elif e.key == K_DOWN: return "down"
 				elif e.key == K_LEFT: return "left"
 				elif e.key == K_RIGHT: return "right"
-
+				else: return "other_key"
+			if e.type == MOUSEBUTTONDOWN: return "click"
 	def alert_on(self, event, key=None):
 		for e in pygame.event.get():
+			print e
 			if event == "click":
 				if e.type == MOUSEBUTTONDOWN:
 					return True
-			elif e.type == MOUSEMOTION:
-				return True

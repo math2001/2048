@@ -16,18 +16,18 @@ pygame.display.set_caption('2048')
 font = pygame.font.Font('font/ahronbd.ttf', 50)
 
 structure = [
-	[0, 2, 0, 2],
-	[0, 0, 0, 8],
-	[4, 0, 0, 0],
-	[0, 0, 0, 2]
+	[2, 4, 2, 4],
+	[4, 2, 4, 2],
+	[2, 4, 2, 4],
+	[4, 2, 4, 2]
 ]
 
 move = Move(structure)
 keyboard = Keyboard()
 render = Render()
 cont = True
+game_lose = True
 while cont:
-	game_lose = True
 	screen.fill(h333)
 	key = keyboard.check()
 	
@@ -50,10 +50,16 @@ while cont:
 
 	pygame.display.flip()
 
+	fg_color = [255, 255, 255]
+	bg_color = [0, 0, 0]
+	value = 1
+
 	while game_lose:
-		if keyboard.check() == "end":
+		if keyboard.check() in ("end", 'other_key', 'click'):
 			game_lose = False
-		run_game_lose(screen)
+		fg_color, bg_color, value = run_game_lose(screen, font, fg_color, bg_color, value)
+		pygame.time.wait(5)
+		pygame.display.flip()
 
 
 print 'QUIT'

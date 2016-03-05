@@ -14,10 +14,13 @@ class Move:
 				cont = 100
 				return True
 			cont += 1
+		found = False
 		for ligne in self.structure:
 			for case in ligne:
 				if case == 0:
-					return False
+					fond = True
+		if not found:
+			return False
 		return True
 
 	def right(self, structure='d'):
