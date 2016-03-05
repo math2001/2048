@@ -26,11 +26,19 @@ cont = True
 while cont:
 	screen.fill(h333)
 	key = keyboard.check()
-	if key == "down": move.down()
-	elif key == "up": move.up()
-	elif key == "left": move.left()
-	elif key == "right": move.right()
-	elif key == "end": cont = False
+	
+	if key == "down":
+		move.down()
+	elif key == "up":
+		move.up()
+	elif key == "left":
+		move.left()
+	elif key == "right":
+		move.right()
+	elif key == "end":
+		cont = False
+	if key in ("down", "up", "left", "right"): 
+		move.add_nb()
 
 	render.set_structure(move.get())
 	render.render()
