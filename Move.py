@@ -4,6 +4,24 @@ class Move:
 	def __init__(self, structure=[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]):
 		self.structure = structure
 
+	def _generate_lign(self):
+		lign = []
+		for i in range(4):
+			case = 2 if random.randint(0, 100) > 80 else 0
+			lign.append(case)
+		return lign
+
+	def generate_structure(self, returning=False):
+		structure = []
+		for i in range(4):
+			structure.append(self._generate_lign())
+
+		if not returning:
+			self.structure = structure
+		else:
+			return structure
+
+
 	def add_nb(self):
 		cont = 1
 		while cont < 50:
