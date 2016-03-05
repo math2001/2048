@@ -5,13 +5,20 @@ class Move:
 		self.structure = structure
 
 	def add_nb(self):
-		cont = True
-		while cont:
+		cont = 1
+		while cont < 50:
 			rnd1 = random.randint(0, len(self.structure) - 1)
 			rnd2 = random.randint(0, 3)
 			if self.structure[rnd1][rnd2] == 0:
 				self.structure[rnd1][rnd2] = 2
-				cont = False
+				cont = 100
+				return True
+			cont += 1
+		for ligne in self.structure:
+			for case in ligne:
+				if case == 0:
+					return False
+		return True
 
 	def right(self, structure='d'):
 		if structure == "d": structure = self.structure
@@ -89,10 +96,6 @@ class Move:
 
 	def get(self):
 		return self.structure
-
-	def check_lose(self):
-		current_strcture = self.structure
-
 
 	def check_win(self):
 		for ligne in self.structure:
